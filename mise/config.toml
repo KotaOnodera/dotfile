@@ -1,0 +1,10 @@
+# ~/.config/mise/config.toml
+[tools]
+# awscli = "latest"
+# node = "latest"
+# ruby = "3.4.2"
+neovim = "latest"
+terraform = "latest"
+# go = "latest"
+# postgres = "17"
+# zoxide = "latest"

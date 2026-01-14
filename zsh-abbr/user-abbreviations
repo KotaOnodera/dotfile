@@ -1,0 +1,38 @@
+# abbr
+abbr -S ls='ls -aFl'
+# abbr -S rm='rm -i'
+abbr -S cp='cp -i'
+# abbr -S mv='mv -i'
+# abbr -S vi='vim'
+abbr -S cat='bat'
+abbr -S less='less -NM'
+
+######
+##  Lima
+######
+abbr -S lm='limactl'
+abbr -S lmlt='limactl list'
+abbr -S lmst='limactl start'
+
+######
+##  gcloud
+######
+abbr -S gc='gcloud'
+abbr -S gcconf='gcloud config configurations'
+abbr -S gcconfst='gcloud config set'
+abbr -S gclogin='gcloud auth login --update-adc'
+
+######
+##  Terraform
+######
+abbr -S tf='terraform'
+abbr -S tfp='terraform plan --parallelism=30'
+
+######
+##  Git
+######
+abbr -S gtps='git push --set-upstream origin'
+abbr -S gtdoc='git add -A && git commit -m "update document" && git push -u origin'
+abbr -S gtch='git checkout'
+abbr -S gtcm='git commit -m "'
+abbr -S gtpsor='git push -u origin `git branch --show-current`'

@@ -1,0 +1,90 @@
+{
+  "markdown-pdf.footerTemplate": "<div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm;\"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>",
+  "markdown-pdf.displayHeaderFooter": false,
+  "git.autofetch": true,
+  "explorer.confirmDragAndDrop": false,
+  "git.confirmSync": false,
+  "editor.suggestSelection": "first",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "git.ignoreRebaseWarning": true,
+  "workbench.iconTheme": "vscode-icons",
+  "vsicons.dontShowNewVersionMessage": true,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "explorer.confirmDelete": false,
+  "workbench.editor.enablePreview": false,
+  "peacock.affectDebuggingStatusBar": true,
+  "peacock.affectTabActiveBorder": true,
+  "editor.inlayHints.enabled": "off",
+  "workbench.colorCustomizations": {
+    "editor.lineHighlightBackground": "#1073cf2d",
+    "editor.lineHighlightBorder": "#9fced11f"
+  },
+  "editor.wordWrap": "off",
+  "diffEditor.wordWrap": "off",
+  "editor.guides.indentation": false,
+  "editor.guides.bracketPairs": false,
+  "git.path": "/usr/local/bin/git",
+  "git.enableSmartCommit": true,
+  "editor.tabSize": 2,
+  // "[python]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[json]": {
+  //   "editor.defaultFormatter": "vscode.json-language-features"
+  // },
+  // "[javascript]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[typescript]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "markdownlint.config": {
+    "default": true, // すべてのルールを有効にする
+    "MD001": false, // 見出しのレベルを1つに制限するルールを無効にする
+    "MD010": false, // 見出しの行間を制限するルールを無効にする
+    "MD022": false, // 見出しのスタイルを制限するルールを無効にする
+    "MD041": false // ページタイトルのルールを無効にする
+  },
+  "application.shellEnvironmentResolutionTimeout": 60,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {},
+  "workbench.colorTheme": "Default High Contrast",
+  // "geminicodeassist.project": "planar-wallaby-jvmxc",
+  // "prettier.proseWrap": "never",
+  // "geminicodeassist.inlineSuggestions.enableAuto": true,
+  "cSpell.userWords": [
+    "cloudrun",
+    "notebooklm"
+  ],
+  "hediet.vscode-drawio.resizeImages": null,
+  "window.newWindowDimensions": "inherit",
+  // "genieai.promptPrefix.addTests": "このコードのテストを実装してください",
+  // "genieai.promptPrefix.optimize": "このコードを最適化してください",
+  // "genieai.promptPrefix.findProblems": "このコードのバグを見つけてください",
+  // "genieai.promptPrefix.explain": "このコードを日本語で説明してください",
+  // "genieai.promptPrefix.addComments": "このコードに日本語でコメントを追加してください",
+  // "genieai.promptPrefix.completeCode": "このコードを完成させてください",
+  // "genieai.promptPrefix.explain-enabled": false,
+  "roo-cline.allowedCommands": [
+    "git log",
+    "git diff",
+    "git show"
+  ],
+  "roo-cline.deniedCommands": [],
+  "projectManager.tags": [
+    "Personal",
+    "Work",
+    "GAS",
+    "TechBlog"
+  ],
+  "editor.fontSize": 14,
+  "roo-cline.debug": false
+}
