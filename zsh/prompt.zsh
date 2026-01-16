@@ -18,20 +18,13 @@
 # %t    時間(hh:mm(am/pm))
 
 # 現在時刻を 30 秒ごとに再描画（ALRM トラップで zle reset-prompt）
-TMOUT=30
+TMOUT=7
 TRAPALRM(){
 	zle reset-prompt
 }
 # pure テーマ: Git ブランチ名をシアンで表示
 # zstyle ':prompt:pure:git:branch' color cyan
 
-# Git 補完と __git_ps1 用の設定
-# git-completion の関数探索パス追加
-fpath=(~/.zsh $fpath)
-# 補完初期化
-autoload -Uz compinit && compinit -u
-# __git_ps1 に dirty/clean 状態を表示
-GIT_PS1_SHOWDIRTYSTATE=true
 # プロンプト内コマンド代入を有効化
 setopt PROMPT_SUBST
 
