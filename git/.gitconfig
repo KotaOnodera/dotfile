@@ -1,0 +1,13 @@
+[core]
+	editor = code
+	pager = delta
+[user]
+	name = KotaOnodera
+	email = kota.onodera@terrako.org
+[http]
+	postBuffer = 524288000
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	side-by-side = true
