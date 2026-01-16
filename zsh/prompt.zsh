@@ -23,7 +23,7 @@ TRAPALRM(){
 	zle reset-prompt
 }
 # pure テーマ: Git ブランチ名をシアンで表示
-# zstyle ':prompt:pure:git:branch' color cyan
+zstyle ':prompt:pure:git:branch' color yellow
 
 # プロンプト内コマンド代入を有効化
 setopt PROMPT_SUBST

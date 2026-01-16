@@ -8,6 +8,15 @@ export CLICOLOR=1
 export LSCOLORS=DxGxcxdxCxegedabagacad
 export ZSH_CONFIG="${ZDOTDIR:-$HOME}/.config/zsh"
 
+# eza 用の最低限色 (LS_COLORS)
+export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
+# Claude CodeをBedrock経由で利用する
+# Enable Bedrock integration
+export CLAUDE_CODE_USE_BEDROCK=1
+export AWS_REGION=us-east-1
+export ANTHROPIC_MODEL='us.anthropic.claude-opus-4-5-20251101-v1:0'
+
 # -------------------------------------------------------------------------------------- #
 
 
@@ -16,18 +25,6 @@ export ZSH_CONFIG="${ZDOTDIR:-$HOME}/.config/zsh"
 ##################
 
 export PATH="/opt/homebrew/bin:$PATH"
-
-# # The next line updates PATH for the Google Cloud SDK.
-# if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-
-# # The next line enables shell command completion for gcloud.
-# if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
-
-# pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init --path)"
-# eval "$(pyenv init -)"
 
 # # for gcloud command
 # export CLOUDSDK_PYTHON=/usr/bin/python3
@@ -39,9 +36,11 @@ export PATH="/opt/homebrew/bin:$PATH"
 ##### Source #####
 ##################
 
+# Zshrcのsourceの読み込み
+source "$ZSH_CONFIG/completion.zsh" > /dev/null
+
 # プラグインを有効化
 eval "$(sheldon source)"
-
 
 # mise
 # ref: https://mise.jdx.dev/getting-started.html#activate-mise
@@ -49,17 +48,10 @@ if [ -d "$HOME/.config/mise" ]; then
 	eval "$(mise activate zsh)"
 fi
 
-# Zshrcのsourceの読み込み
-source "$ZSH_CONFIG/completion.zsh" > /dev/null
-source "$ZSH_CONFIG/prompt.zsh" 
-source "$ZSH_CONFIG/git-prompt.sh"
+# zcxideの置換
+eval "$(zoxide init zsh --cmd cd)"
+
+# miseでインストールしているpureのあとに読み込み
+source "$ZSH_CONFIG/prompt.zsh"
 
 # -------------------------------------------------------------------------------------- #
-
-# Git 補完と __git_ps1 用の設定
-# git-completion の関数探索パス追加
-fpath=($ZSH_CONFIG $fpath)
-# 補完初期化
-autoload -Uz compinit && compinit -u
-# git 補完スクリプト指定
-zstyle ':completion:*:*:git:*' script $ZSH_CONFIG/git-completion.bash
