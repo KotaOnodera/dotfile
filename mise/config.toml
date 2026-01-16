@@ -1,10 +1,15 @@
 # ~/.config/mise/config.toml
+# https://qiita.com/uhooi/items/0fe7cedd16a09940a710
 [tools]
-# awscli = "latest"
-# node = "latest"
+awscli = "latest"
+node = "latest"
 # ruby = "3.4.2"
 neovim = "latest"
 terraform = "latest"
+kubectl = "latest"
 # go = "latest"
 # postgres = "17"
-# zoxide = "latest"
+python = "latest"
+gcloud = "latest"
+claude-code = "latest"
+codex = "latest"
