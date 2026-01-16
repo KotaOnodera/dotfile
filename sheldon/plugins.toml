@@ -10,6 +10,9 @@
 #
 # See the documentation for more https://github.com/rossmacarthur/sheldon#readme
 
+# https://zenn.dev/ganta/articles/e1e0746136ce67
+# https://zenn.dev/renoinn/articles/54fc3ed5d3e447
+
 shell = "zsh"
 
 [plugins]
@@ -28,6 +31,12 @@ github = "sindresorhus/pure"
 
 [plugins.zsh-abbr]
 github = "olets/zsh-abbr"
+
+[plugins.zsh-git-fzf]
+github = "alexiszamanidis/zsh-git-fzf"
+
+[plugins.zsh-fzf-history-search]
+github = "joshskidmore/zsh-fzf-history-search"
 
 # syntax-highlighting は最後に読み込む
 [plugins.zsh-syntax-highlighting]
