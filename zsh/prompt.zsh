@@ -22,6 +22,8 @@ TMOUT=30
 TRAPALRM(){
 	zle reset-prompt
 }
+# pure テーマ: Git ブランチ名をシアンで表示
+# zstyle ':prompt:pure:git:branch' color cyan
 
 # Git 補完と __git_ps1 用の設定
 # git-completion の関数探索パス追加
