@@ -11,5 +11,16 @@ kubectl = "latest"
 # postgres = "17"
 python = "latest"
 gcloud = "latest"
-claude-code = "latest"
 codex = "latest"
+docker-cli = "latest"
+colima = "latest"
+lima = "latest"
+
+[tasks.colima-stop]
+run = "'colima stop'"
+
+[tasks.colima-status]
+run = "'colima status'"
+
+[tasks.colima-start]
+run = "'colima start'"

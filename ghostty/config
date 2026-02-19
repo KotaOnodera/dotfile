@@ -1,0 +1,40 @@
+# Ghostty config (organized by category)
+
+# --- Theme and colors ---
+theme = TokyoNight
+background = #3c4048
+background-opacity = 0.95
+
+# --- Font ---
+font-family = "Hack Nerd Font Mono"
+font-size = 14
+font-thicken = true
+
+# --- Window and tabs ---
+maximize = true
+window-new-tab-position = current
+confirm-close-surface = always
+macos-titlebar-style = tabs
+macos-window-shadow = true
+
+# --- Cursor and input ---
+cursor-style = block
+cursor-style-blink = true
+mouse-hide-while-typing = true
+
+# --- Shell and working directory ---
+command = zsh
+shell-integration = detect
+window-inherit-working-directory = true
+
+# --- Quick terminal ---
+quick-terminal-position = "right"
+quick-terminal-screen = "main"
+quick-terminal-animation-duration = 0.3
+keybind = "cmd+shift+t=toggle_quick_terminal"
+
+# --- Clipboard ---
+copy-on-select = true
+clipboard-read = allow
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true

@@ -7,9 +7,11 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 export CLICOLOR=1
 export LSCOLORS=DxGxcxdxCxegedabagacad
 export ZSH_CONFIG="${ZDOTDIR:-$HOME}/.config/zsh"
+export EDITOR=nvim
 
 # eza 用の最低限色 (LS_COLORS)
-export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+# ディレクトリ=シアン, 実行ファイル=緑, シンボリックリンク=マゼンタ
+export LS_COLORS="di=01;36:ex=01;32:ln=01;35"
 
 # Claude CodeをBedrock経由で利用する
 # Enable Bedrock integration
@@ -49,7 +51,9 @@ if [ -d "$HOME/.config/mise" ]; then
 fi
 
 # zcxideの置換
-eval "$(zoxide init zsh --cmd cd)"
+if [[ $- == *i* ]]; then
+  eval "$(zoxide init zsh --cmd cd)"
+fi
 
 # miseでインストールしているpureのあとに読み込み
 source "$ZSH_CONFIG/prompt.zsh"

@@ -8,13 +8,14 @@ abbr -S cp='cp -i'
 # abbr -S vi='vim'
 abbr -S cat='bat'
 abbr -S less='less -NM'
+abbr -S cdgi='cd ~/github/'
 
 ######
-##  Lima
+##  Colima
 ######
-abbr -S lm='limactl'
-abbr -S lmlt='limactl list'
-abbr -S lmst='limactl start'
+abbr -S cm='colima'
+abbr -S cmlt='colima list'
+abbr -S cmstr='colima start --cpu 4 --memory 8 --disk 60'
 
 ######
 ##  gcloud
@@ -23,6 +24,12 @@ abbr -S gc='gcloud'
 abbr -S gcconf='gcloud config configurations'
 abbr -S gcconfst='gcloud config set'
 abbr -S gclogin='gcloud auth login --update-adc'
+
+######
+## AWS
+######
+abbr -S ssm='aws ssm start-session --target i-0b91aef219aeda209 --region ap-northeast-1'
+
 
 ######
 ##  Terraform
@@ -71,4 +78,16 @@ abbr -S ll="eza -aahl --icons --git"
 abbr -S vim='nvim'
 abbr -S nvsheldon='nvim ~/.config/sheldon/plugins.toml'
 abbr -S nvmise='nvim ~/.config/mise/config.toml'
+abbr -S nvabbr='nvim ~/.config/zsh-abbr/user-abbreviations'
 
+######
+## Codex
+######
+# abbr -S codex='codex --add-dir /Users/kotaonodere/'
+
+######
+## zenn-cli
+######
+abbr -S znin="npx zenn init"
+abbr -S znpre="npx zenn preview"
+abbr -S znmk="npx zenn new:article --slug"
