@@ -80,6 +80,12 @@ abbr -S nvsheldon='nvim ~/.config/sheldon/plugins.toml'
 abbr -S nvmise='nvim ~/.config/mise/config.toml'
 abbr -S nvabbr='nvim ~/.config/zsh-abbr/user-abbreviations'
 
+
+######
+## Claude
+######
+abbr -S cac="cage claude"
+
 ######
 ## Codex
 ######
