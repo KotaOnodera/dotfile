@@ -12,7 +12,7 @@
     "**/.factorypath": true
   },
   "git.ignoreRebaseWarning": true,
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "material-icon-theme",
   "vsicons.dontShowNewVersionMessage": true,
   "terminal.integrated.defaultProfile.osx": "zsh",
   "explorer.confirmDelete": false,
@@ -89,5 +89,13 @@
   "roo-cline.debug": false,
   "cSpell.enabledFileTypes": {
     "drawio": false
-  }
+  },
+  "workbench.preferredHighContrastColorTheme": "GitHub Dark High Contrast",
+  "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+  "terminal.integrated.fontFamily": "'Hack Nerd Font', monospace",
+  "terminal.integrated.fontSize": 14,
+  "workbench.editorAssociations": {
+    "*.png": "hediet.vscode-drawio"
+  },
+  "workbench.startupEditor": "none"
 }

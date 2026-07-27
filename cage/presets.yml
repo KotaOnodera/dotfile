@@ -1,0 +1,21 @@
+presets:
+  base:
+    allow:
+      - "$HOME"
+      - "/private/tmp"
+      - "/var/folders"
+      - "/Library/Caches"
+
+  git-enabled:
+    allow-git: true
+    allow-keychain: true
+
+auto-presets:
+  - command: claude
+    presets:
+      - base
+      - git-enabled
+  - command: happy
+    presets:
+      - base
+      - git-enabled

@@ -15,9 +15,10 @@ export LS_COLORS="di=01;36:ex=01;32:ln=01;35"
 
 # Claude CodeをBedrock経由で利用する
 # Enable Bedrock integration
-export CLAUDE_CODE_USE_BEDROCK=1
-export AWS_REGION=us-east-1
-export ANTHROPIC_MODEL='us.anthropic.claude-opus-4-5-20251101-v1:0'
+# export CLAUDE_CODE_USE_BEDROCK=1
+# export AWS_REGION=ap-northeast-1
+# export ANTHROPIC_MODEL='global.anthropic.claude-opus-4-6-v1'
+# export AWS_BEARER_TOKEN_BEDROCK=""
 
 # -------------------------------------------------------------------------------------- #
 
@@ -26,7 +27,7 @@ export ANTHROPIC_MODEL='us.anthropic.claude-opus-4-5-20251101-v1:0'
 ##### Pathes #####
 ##################
 
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH"
 
 # # for gcloud command
 # export CLOUDSDK_PYTHON=/usr/bin/python3
@@ -57,5 +58,3 @@ fi
 
 # miseでインストールしているpureのあとに読み込み
 source "$ZSH_CONFIG/prompt.zsh"
-
-# -------------------------------------------------------------------------------------- #

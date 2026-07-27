@@ -1,0 +1,64 @@
+#!/bin/bash
+
+set -euo pipefail
+
+script_dir=$(cd "$(dirname "$0")" && pwd -P)
+# shellcheck source=scripts/lib/dotfiles.sh
+. "$script_dir/scripts/lib/dotfiles.sh"
+
+usage() {
+  cat <<'EOF'
+Usage: ./verify [--skip-brew] [--skip-mise] [--help]
+
+Read-only verification for this dotfiles repository.  Checks Git metadata,
+the link manifest and managed links, then validates the Brewfile and mise
+configuration unless their respective checks are skipped.
+EOF
+}
+
+skip_brew=0
+skip_mise=0
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --skip-brew) skip_brew=1 ;;
+    --skip-mise) skip_mise=1 ;;
+    --help) usage; exit 0 ;;
+    *) printf 'Error: unknown option: %s\n' "$1" >&2; usage >&2; exit 2 ;;
+  esac
+  shift
+done
+
+DOTFILES_VERIFY_FAILURES=0
+DOTFILES_VERIFY_ROOT_INITIALIZED=0
+DOTFILES_VERIFY_ROOT_VALID=0
+DOTFILES_VERIFY_ROOT=
+verification_failed=0
+
+if verify_git_repository; then :; else verification_failed=1; fi
+if verify_manifest_sources; then :; else verification_failed=1; fi
+if verify_declared_links; then :; else verification_failed=1; fi
+if [ "$skip_brew" -eq 0 ]; then
+  if run_brew_bundle_check; then
+    :
+  else
+    verify_problem "Brewfile check failed"
+    verification_failed=1
+  fi
+fi
+if [ "$skip_mise" -eq 0 ]; then
+  if run_mise_doctor; then
+    :
+  else
+    verify_problem "mise doctor failed"
+    verification_failed=1
+  fi
+fi
+
+if [ "$verification_failed" -eq 0 ]; then
+  printf 'Verification succeeded: 0 problems found.\n'
+  exit 0
+fi
+
+printf 'Verification failed: %s problem(s) found.\n' "$DOTFILES_VERIFY_FAILURES" >&2
+exit 1
