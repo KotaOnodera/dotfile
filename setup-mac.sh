@@ -1,6 +1,7 @@
-# bin/bash
+#!/bin/bash
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Backward-compatible entry point: keep old automation on the safe bootstrap path.
+set -euo pipefail
 
-ln -s ~/.config/vscode/settings.json /Users/kotaonodera/Library/Application\ Support/Code/User
-ln -s ~/.config/zsh/
+script_dir=$(cd "$(dirname "$0")" && pwd -P)
+exec "$script_dir/bootstrap" "$@"

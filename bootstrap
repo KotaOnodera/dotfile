@@ -1,0 +1,78 @@
+#!/bin/bash
+
+set -euo pipefail
+
+script_dir=$(cd "$(dirname "$0")" && pwd -P)
+# shellcheck source=scripts/lib/dotfiles.sh
+. "$script_dir/scripts/lib/dotfiles.sh"
+
+usage() {
+  cat <<'EOF'
+Usage: ./bootstrap [--dry-run] [--link-only] [--skip-brew] [--skip-mise] [--backup] [--help]
+
+Synchronize Brewfile and mise, then safely create the links declared in
+manifests/links.tsv.  --dry-run performs only validation and prints planned
+file operations.  --backup preserves conflicting destinations before linking.
+EOF
+}
+
+dry_run=0
+link_only=0
+skip_brew=0
+skip_mise=0
+backup=0
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --dry-run) dry_run=1 ;;
+    --link-only) link_only=1 ;;
+    --skip-brew) skip_brew=1 ;;
+    --skip-mise) skip_mise=1 ;;
+    --backup) backup=1 ;;
+    --help) usage; exit 0 ;;
+    *) printf 'Error: unknown option: %s\n' "$1" >&2; usage >&2; exit 2 ;;
+  esac
+  shift
+done
+
+# A complete preflight is deliberately the first operation.  It protects
+# package synchronization from a later malformed entry or link conflict.
+preflight_declared_links "$backup"
+
+brew_command=${BREW_CMD-brew}
+mise_command=${MISE_CMD-mise}
+
+if [ "$dry_run" -eq 1 ]; then
+  root=$(dotfiles_command_root)
+  if [ "$link_only" -eq 0 ]; then
+    if [ "$skip_brew" -eq 0 ]; then
+      validate_command_override "$brew_command" brew
+      printf '%s bundle install --file %s\n' "$brew_command" "$root/brew/Brewfile"
+    fi
+    if [ "$skip_mise" -eq 0 ]; then
+      validate_command_override "$mise_command" mise
+      printf '(cd %s && %s install)\n' "$root/mise" "$mise_command"
+    fi
+  fi
+  create_declared_links "$backup" 1
+  exit 0
+fi
+
+if [ "$link_only" -eq 0 ]; then
+  brew_path=
+  mise_path=
+  if [ "$skip_brew" -eq 0 ]; then
+    brew_path=$(command_path_or_error "$brew_command" brew)
+  fi
+  if [ "$skip_mise" -eq 0 ]; then
+    mise_path=$(command_path_or_error "$mise_command" mise)
+  fi
+  if [ "$skip_brew" -eq 0 ]; then
+    run_brew_bundle_install "$brew_path"
+  fi
+  if [ "$skip_mise" -eq 0 ]; then
+    run_mise_install "$mise_path"
+  fi
+fi
+
+create_declared_links "$backup" 0
